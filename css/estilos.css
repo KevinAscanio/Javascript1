@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../fuentes/Roboto/Roboto-Regular.ttf");
+}
+
+.father-body {
+  background: linear-gradient(88deg, #28496a 0%, #6484fc 100%);
+  color: rgb(255, 255, 255);
+  font-family: "Roboto", sans-serif;
+}
