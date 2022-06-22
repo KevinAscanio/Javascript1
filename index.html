@@ -15,32 +15,50 @@
           type="text"
           placeholder="Dinos tu nombre"
         />
+
         <input
           id="apellidoFormulario"
           type="text"
           placeholder="Dinos tu apellido"
         />
+
         <p id="answer-form"></p>
 
-        <input type="submit" value="Enviar" />
+        <label for="enviarNombres">
+          <input id="enviarNombres" type="submit" value="Enviar" />
+        </label>
       </form>
 
       <h3>¿Jugamos?</h3>
       <form id="f2">
         <h4>Haz tu eleccion:</h4>
+        <label for="1">
+          <input id="1" type="radio" value="piedra" name="eleccion" />
+          Piedra
+        </label>
 
-        <input id="1" type="radio" value="1" name="eleccion" />Piedra
+        <label for="2">
+          <input id="2" type="radio" value="papel" name="eleccion" />
+          Papel
+        </label>
 
-        <input id="2" type="radio" value="2" name="eleccion" />Papel
+        <label for="3">
+          <input id="3" type="radio" value="tijeras" name="eleccion" />
+          Tijeras
+        </label>
 
-        <input id="3" type="radio" value="3" name="eleccion" />Tijeras
-
-        <input id="4" type="radio" value="4" name="eleccion" /> Ver Jugadores
-        mas ganadores
-
-        <input id="5" type="radio" value="5" name="eleccion" /> No jugar
+        <label for="4">
+          <input id="4" type="radio" value="Ranking" name="eleccion" />
+          Ver Jugadores mas ganadores
+        </label>
+        <label for="5">
+          <input id="5" type="radio" value="salir" name="eleccion" />
+          No jugar
+        </label>
         <br />
-        <input type="submit" value="jugar" />
+
+        <input id="enviar" type="submit" value="Jugar" />
+        <label for="enviar"> </label>
       </form>
 
       <div id="secondary-section">
@@ -48,6 +66,7 @@
         <p id="grito-inicio"></p>
         <p id="grito-de-juego"></p>
         <p id="grito-de-conteo"></p>
+        <h4 id="resultadoJuego"></h4>
       </div>
     </section>
   </body>
