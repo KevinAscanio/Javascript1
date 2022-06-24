@@ -8,3 +8,7 @@
   color: rgb(255, 255, 255);
   font-family: "Roboto", sans-serif;
 }
+
+#section-header {
+  background: linear-gradient(88deg, #ca6732 0%, #fc9c64 100%);
+}
