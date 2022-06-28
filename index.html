@@ -8,67 +8,85 @@
       <h1>Piedra Papel o Tijeras! - DOM</h1>
     </header>
     <section class="main-seccion">
-      <h2 id="ask-name">Hola ¿Como te llamas?</h2>
-      <form id="formularioNombre">
-        <input
-          id="nombreFormulario"
-          type="text"
-          placeholder="Dinos tu nombre"
-        />
+      <section id="userSection">
+        <h2 id="ask-name">Hola ¿Como te llamas?</h2>
+        <form id="formularioNombre">
+          <input
+            id="nombreFormulario"
+            type="text"
+            placeholder="Dinos tu nombre"
+          />
 
-        <input
-          id="apellidoFormulario"
-          type="text"
-          placeholder="Dinos tu apellido"
-        />
+          <input
+            id="apellidoFormulario"
+            type="text"
+            placeholder="Dinos tu apellido"
+          />
 
-        <p id="answer-form"></p>
+          <p id="answer-form"></p>
 
-        <label for="enviarNombres">
-          <input id="enviarNombres" type="submit" value="Enviar" />
-        </label>
-      </form>
+          <label for="enviarNombres">
+            <input id="enviarNombres" type="submit" value="Enviar" />
+          </label>
+        </form>
+      </section>
 
-      <h3>¿Jugamos?</h3>
-      <form id="f2">
-        <h4>Haz tu eleccion:</h4>
-        <label for="1">
-          <input id="1" type="radio" value="piedra" name="eleccion" />
-          Piedra
-        </label>
-
-        <label for="2">
-          <input id="2" type="radio" value="papel" name="eleccion" />
-          Papel
-        </label>
-
-        <label for="3">
-          <input id="3" type="radio" value="tijeras" name="eleccion" />
-          Tijeras
-        </label>
-
-        <label for="4">
-          <input id="4" type="radio" value="Ranking" name="eleccion" />
-          Ver Jugadores mas ganadores
-        </label>
-        <label for="5">
-          <input id="5" type="radio" value="salir" name="eleccion" />
-          Salir y ver resultados.
-        </label>
-        <h4 id="eleccionUsuario"></h4>
-        <br />
-
-        <input id="enviar" type="submit" value="Jugar" />
-        <label for="enviar"> </label>
-      </form>
-
-      <div id="secondary-section">
-        <h3 id="lets-play"></h3>
-        <p id="grito-inicio"></p>
-        <p id="grito-de-juego"></p>
-        <p id="grito-de-conteo"></p>
-        <h4 id="resultadoJuego"></h4>
+      <section id="boxes">
+        <section id="boxes-section-choice">
+          <div class="cajita eleccionPiedra"></div>
+          <div class="cajita eleccionPapel"></div>
+          <div class="cajita eleccionTijeras"></div>
+        </section>
+        <section id="box-CPU">
+          <div class="cajita" id="cajitaCPU"></div>
+        </section>
+      </section>
+      <div id="Reiniciador">
+        <button id="nuevoJuego" class="oculto">Reiniciar Juego</button>
       </div>
+      <section>
+        <h3>¿Jugamos?</h3>
+        <form id="f2">
+          <h4>Haz tu eleccion:</h4>
+          <label for="1">
+            <input id="1" type="radio" value="piedra" name="eleccion" />
+            Piedra
+          </label>
+
+          <label for="2">
+            <input id="2" type="radio" value="papel" name="eleccion" />
+            Papel
+          </label>
+
+          <label for="3">
+            <input id="3" type="radio" value="tijeras" name="eleccion" />
+            Tijeras
+          </label>
+
+          <label for="4">
+            <input id="4" type="radio" value="Ranking" name="eleccion" />
+            Ver Jugadores mas ganadores
+          </label>
+
+          <h4 id="eleccionUsuario"></h4>
+          <br />
+
+          <input id="enviar" type="submit" value="Jugar" />
+          <label for="enviar"> </label>
+
+          <button id="terminarJuego" name="eleccion" value="salir">
+            Salir y ver resultados
+          </button>
+        </form>
+
+        <div id="secondary-section">
+          <h3 id="lets-play"></h3>
+          <p id="grito-inicio"></p>
+          <p id="grito-de-juego"></p>
+          <p id="grito-de-conteo"></p>
+          <h4 id="resultadoJuego"></h4>
+        </div>
+      </section>
     </section>
   </body>
   <script src="javas/miarchivo.js"></script>
