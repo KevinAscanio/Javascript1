@@ -1,3 +1,4 @@
+// VARIABLES PARA BLOQUEAR ALGUNAS JUGADAS
 let bloquearFraseInicial = true;
 let bloquearFraseFinal = true;
 let bloquearJugada = true;
@@ -27,7 +28,7 @@ const ocultarForm = () => {
     bloquearFraseInicial = false;
   }
 };
-//EVENTO FORMULARIO
+//EVENTO ENVIAR DE FORMULARIO
 saludoForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -40,7 +41,7 @@ saludoForm.addEventListener("submit", (e) => {
   const nombreFormulario = e.target.children[0].value;
   const apellidoFormulario = e.target.children[1].value;
 
-  ////////////////////////////////////////
+  //////BLOQUEO PARA QUE USUARIO INGRESE SU NOMBRE ANTES DE JUGAR
   if (
     typeof nombreFormulario !== "string" ||
     nombreFormulario === "" ||
@@ -77,9 +78,8 @@ if (!!nombreUsuario && !!apellidoUsuario) {
     Sigue jugando y mejora tu puntuacion! <h3>`;
   }
 }
-///VARIABLES INCIALES
 
-///////ARRAYS DE OBJETOS
+///////ARRAYS DE OBJETOS BASE DE DATOS JUGADORES
 
 const historialJugadores = [
   { nombre: "Maria", ganadas: 12, perdidas: 20, empates: 4 },
@@ -94,7 +94,7 @@ const jugadoresExcepcionales = [
   { nombre: "Kevin", ganadas: 15, perdidas: 0, empates: 7 },
 ];
 
-/////////////METODO DE ARRAY 2
+/////////////METODO DE ARRAY
 
 todosLosJugadores = jugadoresExcepcionales.concat(historialJugadores);
 
@@ -105,15 +105,12 @@ const jugadoresMasGanadores = todosLosJugadores.filter(
   (player) => player.ganadas > 12
 );
 
-console.log(jugadoresMasGanadores);
-
 /////////////METODO 2 MAP
 
 const jugadoresPremiados = jugadoresMasGanadores.map((premios) => ({
   ...premios,
   medalla: "Oro",
 }));
-console.log(jugadoresPremiados);
 
 //////////////////VARIABLES GLOBALES NECESARIAS
 
@@ -125,7 +122,8 @@ let eleccion;
 let CPU;
 let eleccionCompu;
 let UsuarioElige;
-///////////////FUNCIONES
+let usarBoton = true;
+///////////////FUNCIONES PARA LA INTERFAZ DE JUEGO
 const suma = (m) => {
   return (m = m + 1);
 };
@@ -183,7 +181,7 @@ const reiniciarGritoDeResultado = () => {
   const gritosNumeros = document.getElementById("grito-de-conteo");
   gritosNumeros.innerHTML = "";
 };
-////////////////JUEGO USUARIO PIEDRA
+////////////////SI USUARIO JUEGA PIEDRA
 
 const juegoPiedra = () => {
   if (bloquearJugada) {
@@ -210,7 +208,7 @@ const juegoPiedra = () => {
     }
   }
 };
-////////JUEGO USUARIO PAPEL
+////////SI USUARIO JUEGA PAPEL
 
 const juegoPapel = () => {
   const gritoResultado = document.getElementById("resultadoJuego");
@@ -230,13 +228,13 @@ const juegoPapel = () => {
   } else {
     contar();
     ganada = suma(ganada);
-    console.log(ganada);
+
     gritoResultado.innerHTML = "Tu elegiste Papel y yo elegi Piedra ! Ganaste!";
     bloquearJugada = false;
   }
 };
 
-////////////////JUEGO USUARIO TIJERAS
+////////////////SI USUARIO JUEGA TIJERAS
 
 const juegoTijeras = () => {
   const gritoResultado = document.getElementById("resultadoJuego");
@@ -261,7 +259,7 @@ const juegoTijeras = () => {
   }
 };
 
-//////// USUARIO ELECCION VER RANKING
+//////// USUARIO BOTON VER RANKING
 
 const rankeo = document.getElementById("rankeo");
 rankeo.addEventListener("click", () => {
@@ -269,9 +267,8 @@ rankeo.addEventListener("click", () => {
   gritoResultado.innerHTML = `Los jugadores mas ganadores son: ${jugadoresPremiados[0].nombre}, ${jugadoresPremiados[1].nombre}, ${jugadoresPremiados[2].nombre}. Juega y únete a ellos!`;
 });
 
-//INTERFAZ DE JUEGO
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let usarBoton = true;
+//INTERFAZ DE JUEGO///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const eleccionPiedra = document.querySelector(".eleccionPiedra");
 const eleccionPapel = document.querySelector(".eleccionPapel");
 const eleccionTijeras = document.querySelector(".eleccionTijeras");
@@ -330,7 +327,7 @@ const reiniciarTijerasUsuario = () => {
   reiniciarJuego.classList.add("oculto");
 };
 
-//BOTONES DE RESETEO DE ELECCION JUGADOR
+//BOTONES DE RESETEO DE ELECCION USUARIO
 
 const botonResetearPiedra = () => {
   const reiniciarJuego = document.getElementById("nuevoJuego");
