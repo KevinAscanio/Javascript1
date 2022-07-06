@@ -3,6 +3,11 @@
   src: url("../fuentes/Roboto/Roboto-Regular.ttf");
 }
 
+* {
+  border: 0;
+  margin: 0;
+}
+
 .father-body {
   background: linear-gradient(88deg, #b9683c 0%, #fc9c64 100%);
   color: rgb(255, 255, 255);
@@ -10,11 +15,27 @@
 }
 
 #section-header {
-  background: linear-gradient(88deg, #28496a 0%, #6484fc 100%);
+  background: linear-gradient(88deg, #544bb1 0%, #7066e0 100%);
+  padding: 15px;
+}
+h1 {
+  text-align: center;
 }
 
+form {
+  margin: 10px;
+}
 #userSection {
   text-align: center;
+  padding: 20px;
+}
+
+h3 {
+  padding: 5px;
+}
+
+h4 {
+  padding: 5px;
 }
 
 #boxes-section-choice {
@@ -68,21 +89,21 @@
 }
 
 .eleccionPiedra {
-  background-image: url(/imagenes/piedra.png);
+  background-image: url(../imagenes/piedra.png);
   background-size: cover;
   background-position: center;
   display: block;
 }
 
 .eleccionPapel {
-  background-image: url(/imagenes/papel.png);
+  background-image: url(../imagenes/papel.png);
   background-size: cover;
   background-position: center;
   display: block;
 }
 
 .eleccionTijeras {
-  background-image: url(/imagenes/tijeras.png);
+  background-image: url(../imagenes/tijeras.png);
   background-size: cover;
   background-position: center;
   display: block;
@@ -104,4 +125,114 @@
 
 .reiniciarCPU {
   background-image: none;
+}
+
+#Reiniciador {
+  display: flex;
+  justify-content: center;
+}
+#nuevoJuego {
+  border: 0;
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #7066e0;
+  color: #fff;
+  font-size: 1em;
+  padding: 4px;
+  cursor: pointer;
+  margin: 10px;
+}
+#nuevoJuego:hover {
+  background-color: rgb(112, 102, 224, 0.9);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+#nuevoJuego:active {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+
+#nuevoJuego:focus {
+  box-shadow: 0 0 0 3px rgb(112 102 224 / 50%);
+}
+
+#rankeo {
+  border: 0;
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #7066e0;
+  color: #fff;
+  font-size: 1em;
+  padding: 4px;
+  cursor: pointer;
+  margin: 10px;
+}
+#rankeo:hover {
+  background-color: rgb(112, 102, 224, 0.9);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+#rankeo:active {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+
+#rankeo:focus {
+  box-shadow: 0 0 0 3px rgb(112 102 224 / 50%);
+}
+
+#rankeo {
+  border: 0;
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #7066e0;
+  color: #fff;
+  font-size: 1em;
+  padding: 4px;
+  cursor: pointer;
+}
+#rankeo:hover {
+  background-color: rgb(112, 102, 224, 0.9);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+#rankeo:active {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+
+#rankeo:focus {
+  box-shadow: 0 0 0 3px rgb(112 102 224 / 50%);
+}
+
+#terminarJuego {
+  border: 0;
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #7066e0;
+  color: #fff;
+  font-size: 1em;
+  padding: 4px;
+  cursor: pointer;
+}
+#terminarJuego:hover {
+  background-color: rgb(112, 102, 224, 0.9);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+#terminarJuego:active {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+
+#terminarJuego:focus {
+  box-shadow: 0 0 0 3px rgb(112 102 224 / 50%);
+}
+
+.final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#secondary-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

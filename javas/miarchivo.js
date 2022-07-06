@@ -19,7 +19,7 @@ const userSection = document.getElementById("userSection");
 const contenidoFormu = document.querySelector("#contenidoFormu");
 const recordarUser = document.querySelector("#recordarUser");
 const ocultarForm = () => {
-  if (bloquearFraseInicial) {
+  if (bloquearFraseInicial && nombreUsuario !== "" && apellidoUsuario !== "") {
     contenidoFormu.style.display = "none";
     recordarUser.innerHTML = `<h3> Bienvenido! ${nombreUsuario} ${apellidoUsuario}. Vamos a jugar piedra, papel o tijeras. <h3>`;
     const recomendarElegir = document.createElement("h3");
@@ -47,13 +47,13 @@ saludoForm.addEventListener("submit", (e) => {
     nombreFormulario === "" ||
     nombreFormulario === " "
   ) {
-    return alert("Ingrese un Nombre Correcto");
+    return Swal.fire("Ingrese un Nombre correcto");
   } else if (
     typeof apellidoFormulario !== "string" ||
     apellidoFormulario === "" ||
     apellidoFormulario === " "
   ) {
-    return alert("Ingrese un Apellido Correcto");
+    return Swal.fire("Ingrese un Apellido correcto");
   } else {
     if (bloquearFraseInicial) {
       const recomendarElegir = document.createElement("h3");
@@ -112,6 +112,8 @@ const jugadoresPremiados = jugadoresMasGanadores.map((premios) => ({
   medalla: "Oro",
 }));
 
+///AQUI PODRIA USAR DESESTRUCTURACION DE ARRAYS O DE OBJETOS PARA IMPRIMIR EL RANKING
+
 //////////////////VARIABLES GLOBALES NECESARIAS
 
 let ganada = 0;
@@ -125,22 +127,17 @@ let UsuarioElige;
 let usarBoton = true;
 ///////////////FUNCIONES PARA LA INTERFAZ DE JUEGO
 const suma = (m) => {
-  return (m = m + 1);
+  return (m += 1);
 };
 
+/*
 const contar = () => {
   const empecemos = document.getElementById("grito-inicio");
   empecemos.innerHTML = `Okey aqui vamos.`;
 
   const gritos = document.getElementById("grito-de-juego");
   gritos.innerHTML = `Piedra, Papel o tijeras!`;
-
-  for (h = 1; h <= 3; h++) {
-    // Aqui esto me imprime el 3 de una vez y no el conteo como con el alert.
-    const gritosNumeros = document.getElementById("grito-de-conteo");
-    gritosNumeros.innerHTML = h;
-  }
-};
+}; */
 
 const azarCompu = () => {
   const elecciones = ["piedra", "papel", "tijeras"];
@@ -188,22 +185,28 @@ const juegoPiedra = () => {
     const gritoResultado = document.getElementById("resultadoJuego");
 
     if (eleccionCompu === "papel") {
-      contar();
       perdida = suma(perdida);
       gritoResultado.innerHTML =
         "Tu elegiste Piedra y yo elegi Papel ! Perdiste!";
+
+      Swal.fire("PERDISTE!", "Tu elegiste Piedra y yo elegi Papel!", "error");
       bloquearJugada = false;
     } else if (eleccionCompu === "tijeras") {
-      contar();
       ganada = suma(ganada);
       gritoResultado.innerHTML =
         "Tu elegiste Piedra y yo elegi Tijeras ! Ganaste!";
+      Swal.fire(
+        "GANASTE!",
+        "Tu elegiste Piedra y yo elegi Tijeras!",
+        "success"
+      );
       bloquearJugada = false;
     } else {
-      contar();
       empatada = suma(empatada);
       gritoResultado.innerHTML =
         "Tu elegiste Piedra y yo elegi Piedra ! Empate!";
+
+      Swal.fire("EMPATE!", "Tu elegiste Piedra y yo elegi Piedra!", "warning");
       bloquearJugada = false;
     }
   }
@@ -213,23 +216,23 @@ const juegoPiedra = () => {
 const juegoPapel = () => {
   const gritoResultado = document.getElementById("resultadoJuego");
   if (eleccionCompu === "papel") {
-    contar();
     empatada = suma(empatada);
 
     gritoResultado.innerHTML = "Tu elegiste Papel y yo elegi Papel ! Empate!";
+    Swal.fire("EMPATE!", "Tu elegiste Papel y yo elegi Papel!", "warning");
     bloquearJugada = false;
   } else if (eleccionCompu === "tijeras") {
-    contar();
     perdida = suma(perdida);
 
     gritoResultado.innerHTML =
       "Tu elegiste Papel y yo elegi Tijeras ! Perdiste!";
+    Swal.fire("PERDISTE!", "Tu elegiste Papel y yo elegi Tijeras!", "error");
     bloquearJugada = false;
   } else {
-    contar();
     ganada = suma(ganada);
 
     gritoResultado.innerHTML = "Tu elegiste Papel y yo elegi Piedra ! Ganaste!";
+    Swal.fire("GANASTE!", "Tu elegiste Papel y yo elegi Piedra!", "success");
     bloquearJugada = false;
   }
 };
@@ -239,22 +242,22 @@ const juegoPapel = () => {
 const juegoTijeras = () => {
   const gritoResultado = document.getElementById("resultadoJuego");
   if (eleccionCompu === "papel") {
-    contar();
     ganada = suma(ganada);
     gritoResultado.innerHTML =
       "Tu elegiste Tijeras y yo elegi Papel ! Ganaste!";
+    Swal.fire("GANASTE!", "Tu elegiste Tijeras y yo elegi Papel!", "success");
     bloquearJugada = false;
   } else if (eleccionCompu === "tijeras") {
-    contar();
     empatada = suma(empatada);
     gritoResultado.innerHTML =
       "Tu elegiste Tijeras y yo elegi Tijeras ! Empate!";
+    Swal.fire("EMPATE!", "Tu elegiste Tijeras y yo elegi Tijeras!", "warning");
     bloquearJugada = false;
   } else {
-    contar();
     perdida = suma(perdida);
     gritoResultado.innerHTML =
       "Tu elegiste Tijeras y yo elegi Piedra ! Perdiste!";
+    Swal.fire("EMPATE!", "Tu elegiste Tijeras y yo elegi Piedra!", "error");
     bloquearJugada = false;
   }
 };
@@ -282,10 +285,22 @@ const resetearEleccionCPU = () => {
 };
 
 ///FUNCIONES DE OCULTAR ELECCIONES
+
+const ocultarJugamos = () => {
+  const invitacionJugar = document.getElementById("invitacionJugar");
+  invitacionJugar.classList.add("oculto");
+};
+
+const mostrarJugamos = () => {
+  const invitacionJugar = document.getElementById("invitacionJugar");
+  invitacionJugar.classList.remove("oculto");
+};
+
 const soloMostrarPiedra = () => {
   eleccionPiedra.classList.add("agrandar");
   eleccionPapel.classList.add("oculto");
   eleccionTijeras.classList.add("oculto");
+
   usarBoton = false;
 };
 
@@ -309,6 +324,7 @@ const reiniciarPiedraUsuario = () => {
   eleccionPapel.classList.remove("oculto");
   eleccionTijeras.classList.remove("oculto");
   reiniciarJuego.classList.add("oculto");
+  mostrarJugamos();
 };
 
 const reiniciarPapelUsuario = () => {
@@ -317,6 +333,7 @@ const reiniciarPapelUsuario = () => {
   eleccionPiedra.classList.remove("oculto");
   eleccionTijeras.classList.remove("oculto");
   reiniciarJuego.classList.add("oculto");
+  mostrarJugamos();
 };
 
 const reiniciarTijerasUsuario = () => {
@@ -325,6 +342,7 @@ const reiniciarTijerasUsuario = () => {
   eleccionPapel.classList.remove("oculto");
   eleccionPiedra.classList.remove("oculto");
   reiniciarJuego.classList.add("oculto");
+  mostrarJugamos();
 };
 
 //BOTONES DE RESETEO DE ELECCION USUARIO
@@ -383,6 +401,7 @@ eleccionPiedra.addEventListener("click", () => {
       soloMostrarPiedra();
       botonResetearPiedra();
       azarCompu();
+      ocultarJugamos();
       juegoPiedra(eleccionCompu);
     }
   } else if (
@@ -402,6 +421,7 @@ eleccionPiedra.addEventListener("click", () => {
       soloMostrarPiedra();
       botonResetearPiedra();
       azarCompu();
+      ocultarJugamos();
       juegoPiedra(eleccionCompu);
     }
   }
@@ -417,6 +437,7 @@ eleccionPapel.addEventListener("click", () => {
       soloMostrarPapel();
       botonResetearPapel();
       azarCompu();
+      ocultarJugamos();
       juegoPapel(eleccionCompu);
     }
   } else if (
@@ -436,6 +457,7 @@ eleccionPapel.addEventListener("click", () => {
       soloMostrarPapel();
       botonResetearPapel();
       azarCompu();
+      ocultarJugamos();
       juegoPapel(eleccionCompu);
     }
   }
@@ -451,6 +473,7 @@ eleccionTijeras.addEventListener("click", () => {
       soloMostrarTijeras();
       botonResetearTijeras();
       azarCompu();
+      ocultarJugamos();
       juegoTijeras(eleccionCompu);
     }
   } else if (
@@ -470,6 +493,7 @@ eleccionTijeras.addEventListener("click", () => {
       soloMostrarTijeras();
       botonResetearTijeras();
       azarCompu();
+      ocultarJugamos();
       juegoTijeras(eleccionCompu);
     }
   }
@@ -494,6 +518,7 @@ reiniciarLuegoDeSalir = () => {
     const resultado = document.getElementById("Resultados");
     resultado.classList.add("oculto");
     reiniciarGritoDeResultado();
+    mostrarJugamos();
     usarBoton = true;
     bloquearFraseFinal = true;
     bloquearJugada = true;
@@ -505,15 +530,14 @@ const terminarJuego = document.getElementById("terminarJuego");
 
 terminarJuego.addEventListener("click", () => {
   const saludoForm = document.getElementById("formularioNombre");
-
+  ocultarJugamos();
   const nombreFormulario = saludoForm[0].value;
   const apellidoFormulario = saludoForm[1].value;
   const gritoResultado = document.getElementById("resultadoJuego");
-  if (!!nombreUsuario && !!apellidoUsuario) {
-    gritoResultado.innerHTML = `Entiendo ${nombreUsuario} ${apellidoUsuario}, será en otro momento. Adios!`;
-  } else {
-    gritoResultado.innerHTML = `Entiendo ${nombreFormulario} ${apellidoFormulario}, será en otro momento. Adios!`;
-  }
+  !!nombreUsuario && !!apellidoUsuario
+    ? (gritoResultado.innerHTML = `Entiendo ${nombreUsuario} ${apellidoUsuario}, será en otro momento. Adios!`)
+    : (gritoResultado.innerHTML = `Entiendo ${nombreFormulario} ${apellidoFormulario}, será en otro momento. Adios!`);
+
   reiniciarLuegoDeSalir();
   if (bloquearFraseFinal) {
     ///////////////CONSTRUCTOR DE PARTIDAS
