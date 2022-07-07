@@ -79,7 +79,7 @@ if (!!nombreUsuario && !!apellidoUsuario) {
   }
 }
 
-///////ARRAYS DE OBJETOS BASE DE DATOS JUGADORES
+///////ARRAYS DE OBJETOS BASE DE DATOS INICIAL DE JUGADORES
 
 const historialJugadores = [
   { nombre: "Maria", ganadas: 12, perdidas: 20, empates: 4 },
@@ -125,19 +125,17 @@ let CPU;
 let eleccionCompu;
 let UsuarioElige;
 let usarBoton = true;
+
 ///////////////FUNCIONES PARA LA INTERFAZ DE JUEGO
 const suma = (m) => {
   return (m += 1);
 };
 
-/*
-const contar = () => {
-  const empecemos = document.getElementById("grito-inicio");
-  empecemos.innerHTML = `Okey aqui vamos.`;
-
-  const gritos = document.getElementById("grito-de-juego");
-  gritos.innerHTML = `Piedra, Papel o tijeras!`;
-}; */
+const borrarPuntuacionComienzoJuego = () => {
+  const recordarUser = document.querySelector("#recordarUser");
+  recordarUser.innerHTML = `<h3> ${nombreUsuario} ${apellidoUsuario}.
+    Sigue jugando y mejora tu puntuacion! <h3>`;
+};
 
 const azarCompu = () => {
   const elecciones = ["piedra", "papel", "tijeras"];
@@ -181,39 +179,36 @@ const reiniciarGritoDeResultado = () => {
 ////////////////SI USUARIO JUEGA PIEDRA
 
 const juegoPiedra = () => {
-  if (bloquearJugada) {
-    const gritoResultado = document.getElementById("resultadoJuego");
+  borrarPuntuacionComienzoJuego();
 
-    if (eleccionCompu === "papel") {
-      perdida = suma(perdida);
-      gritoResultado.innerHTML =
-        "Tu elegiste Piedra y yo elegi Papel ! Perdiste!";
+  const gritoResultado = document.getElementById("resultadoJuego");
 
-      Swal.fire("PERDISTE!", "Tu elegiste Piedra y yo elegi Papel!", "error");
-      bloquearJugada = false;
-    } else if (eleccionCompu === "tijeras") {
-      ganada = suma(ganada);
-      gritoResultado.innerHTML =
-        "Tu elegiste Piedra y yo elegi Tijeras ! Ganaste!";
-      Swal.fire(
-        "GANASTE!",
-        "Tu elegiste Piedra y yo elegi Tijeras!",
-        "success"
-      );
-      bloquearJugada = false;
-    } else {
-      empatada = suma(empatada);
-      gritoResultado.innerHTML =
-        "Tu elegiste Piedra y yo elegi Piedra ! Empate!";
+  if (eleccionCompu === "papel") {
+    perdida = suma(perdida);
+    gritoResultado.innerHTML =
+      "Tu elegiste Piedra y yo elegi Papel ! Perdiste!";
 
-      Swal.fire("EMPATE!", "Tu elegiste Piedra y yo elegi Piedra!", "warning");
-      bloquearJugada = false;
-    }
+    Swal.fire("PERDISTE!", "Tu elegiste Piedra y yo elegi Papel!", "error");
+    bloquearJugada = false;
+  } else if (eleccionCompu === "tijeras") {
+    ganada = suma(ganada);
+    gritoResultado.innerHTML =
+      "Tu elegiste Piedra y yo elegi Tijeras ! Ganaste!";
+    Swal.fire("GANASTE!", "Tu elegiste Piedra y yo elegi Tijeras!", "success");
+    bloquearJugada = false;
+  } else {
+    empatada = suma(empatada);
+    gritoResultado.innerHTML = "Tu elegiste Piedra y yo elegi Piedra ! Empate!";
+
+    Swal.fire("EMPATE!", "Tu elegiste Piedra y yo elegi Piedra!", "warning");
+    bloquearJugada = false;
   }
 };
 ////////SI USUARIO JUEGA PAPEL
 
 const juegoPapel = () => {
+  borrarPuntuacionComienzoJuego();
+
   const gritoResultado = document.getElementById("resultadoJuego");
   if (eleccionCompu === "papel") {
     empatada = suma(empatada);
@@ -240,6 +235,8 @@ const juegoPapel = () => {
 ////////////////SI USUARIO JUEGA TIJERAS
 
 const juegoTijeras = () => {
+  borrarPuntuacionComienzoJuego();
+
   const gritoResultado = document.getElementById("resultadoJuego");
   if (eleccionCompu === "papel") {
     ganada = suma(ganada);
@@ -257,7 +254,7 @@ const juegoTijeras = () => {
     perdida = suma(perdida);
     gritoResultado.innerHTML =
       "Tu elegiste Tijeras y yo elegi Piedra ! Perdiste!";
-    Swal.fire("EMPATE!", "Tu elegiste Tijeras y yo elegi Piedra!", "error");
+    Swal.fire("PERDISTE!", "Tu elegiste Tijeras y yo elegi Piedra!", "error");
     bloquearJugada = false;
   }
 };
@@ -270,7 +267,7 @@ rankeo.addEventListener("click", () => {
   gritoResultado.innerHTML = `Los jugadores mas ganadores son: ${jugadoresPremiados[0].nombre}, ${jugadoresPremiados[1].nombre}, ${jugadoresPremiados[2].nombre}. Juega y únete a ellos!`;
 });
 
-//INTERFAZ DE JUEGO///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//INTERFAZ DE JUEGO/////////////////////////////////////////////
 
 const eleccionPiedra = document.querySelector(".eleccionPiedra");
 const eleccionPapel = document.querySelector(".eleccionPapel");
@@ -499,8 +496,7 @@ eleccionTijeras.addEventListener("click", () => {
   }
 });
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+//////////////////////////////////////////
 //FUNCION REINICIAR PAGINA LUEGO DE SALIR
 
 reiniciarLuegoDeSalir = () => {
@@ -525,7 +521,7 @@ reiniciarLuegoDeSalir = () => {
   };
 };
 
-////////CON USUARIO ELLECION SALIR
+////////CON USUARIO ELECION SALIR
 const terminarJuego = document.getElementById("terminarJuego");
 
 terminarJuego.addEventListener("click", () => {
@@ -540,7 +536,7 @@ terminarJuego.addEventListener("click", () => {
 
   reiniciarLuegoDeSalir();
   if (bloquearFraseFinal) {
-    ///////////////CONSTRUCTOR DE PARTIDAS
+    ////////CONSTRUCTOR DE PARTIDAS
 
     class Usuario {
       constructor(nombre, apellido, ganada, perdida, empatada) {
@@ -565,7 +561,6 @@ terminarJuego.addEventListener("click", () => {
         
               ¡Juega de nuevo y mejora tu puntuacion!`;
         }
-        //No funciona si reemplazo el primer formulario de los nombres. Probar con getItem de la clase storage.
       }
     }
 
