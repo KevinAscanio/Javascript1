@@ -1,0 +1,6 @@
+[
+  { "nombre": "Maria", "ganadas": 12, "perdidas": 20, "empates": 4 },
+  { "nombre": "Julian", "ganadas": 8, "perdidas": 4, "empates": 2 },
+  { "nombre": "Kevin", "ganadas": 10, "perdidas": 6, "empates": 7 },
+  { "nombre": "Ana", "ganadas": 7, "perdidas": 3, "empates": 5 }
+]

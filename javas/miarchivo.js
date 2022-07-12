@@ -81,12 +81,32 @@ if (!!nombreUsuario && !!apellidoUsuario) {
 
 ///////ARRAYS DE OBJETOS BASE DE DATOS INICIAL DE JUGADORES
 
-const historialJugadores = [
+/*const historialJugadores = [
   { nombre: "Maria", ganadas: 12, perdidas: 20, empates: 4 },
   { nombre: "Julian", ganadas: 8, perdidas: 4, empates: 2 },
   { nombre: "Kevin", ganadas: 10, perdidas: 6, empates: 7 },
   { nombre: "Ana", ganadas: 7, perdidas: 3, empates: 5 },
 ];
+*/
+let lila;
+/*
+fetch("/json/jugadores.json")
+  .then((historial) => historial.json())
+  .then((players) => {
+    lila = players;
+    return lila;
+  });
+console.log(lila);
+*/
+const historialJugadores = async () => {
+  const respuesta = await fetch("/json/jugadores.json");
+  const players = await respuesta.json();
+  return players;
+};
+
+lila = historialJugadores();
+
+console.log(lila);
 
 const jugadoresExcepcionales = [
   { nombre: "Luis", ganadas: 20, perdidas: 3, empates: 1 },
@@ -96,10 +116,10 @@ const jugadoresExcepcionales = [
 
 /////////////METODO DE ARRAY
 
-todosLosJugadores = jugadoresExcepcionales.concat(historialJugadores);
+//todosLosJugadores = jugadoresExcepcionales.concat(historialJugadores);
 
 ///////////////METODOS BUSQUEDA Y TRANSFORMACION
-
+/*
 //////////////METODO 1 FILTER
 const jugadoresMasGanadores = todosLosJugadores.filter(
   (player) => player.ganadas > 12
@@ -111,7 +131,7 @@ const jugadoresPremiados = jugadoresMasGanadores.map((premios) => ({
   ...premios,
   medalla: "Oro",
 }));
-
+*/
 ///AQUI PODRIA USAR DESESTRUCTURACION DE ARRAYS O DE OBJETOS PARA IMPRIMIR EL RANKING
 
 //////////////////VARIABLES GLOBALES NECESARIAS
