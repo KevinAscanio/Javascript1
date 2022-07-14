@@ -81,38 +81,14 @@ if (!!nombreUsuario && !!apellidoUsuario) {
 
 ///////ARRAYS DE OBJETOS BASE DE DATOS INICIAL DE JUGADORES
 
-/*const historialJugadores = [
-  { nombre: "Maria", ganadas: 12, perdidas: 20, empates: 4 },
-  { nombre: "Julian", ganadas: 8, perdidas: 4, empates: 2 },
-  { nombre: "Kevin", ganadas: 10, perdidas: 6, empates: 7 },
-  { nombre: "Ana", ganadas: 7, perdidas: 3, empates: 5 },
-];
-*/
-let lila;
-/*
-fetch("/json/jugadores.json")
-  .then((historial) => historial.json())
-  .then((players) => {
-    lila = players;
-    return lila;
-  });
-console.log(lila);
-*/
-const historialJugadores = async () => {
-  const respuesta = await fetch("/json/jugadores.json");
-  const players = await respuesta.json();
-  return players;
-};
-
-lila = historialJugadores();
-
-console.log(lila);
-
+let todos = [];
 const jugadoresExcepcionales = [
   { nombre: "Luis", ganadas: 20, perdidas: 3, empates: 1 },
   { nombre: "Julian", ganadas: 18, perdidas: 2, empates: 1 },
-  { nombre: "Kevin", ganadas: 15, perdidas: 0, empates: 7 },
+  { nombre: "Pedro", ganadas: 15, perdidas: 0, empates: 7 },
 ];
+
+const baseDatosHistorial = "/json/jugadores.json";
 
 /////////////METODO DE ARRAY
 
@@ -121,16 +97,11 @@ const jugadoresExcepcionales = [
 ///////////////METODOS BUSQUEDA Y TRANSFORMACION
 /*
 //////////////METODO 1 FILTER
-const jugadoresMasGanadores = todosLosJugadores.filter(
-  (player) => player.ganadas > 12
-);
+
 
 /////////////METODO 2 MAP
 
-const jugadoresPremiados = jugadoresMasGanadores.map((premios) => ({
-  ...premios,
-  medalla: "Oro",
-}));
+
 */
 ///AQUI PODRIA USAR DESESTRUCTURACION DE ARRAYS O DE OBJETOS PARA IMPRIMIR EL RANKING
 
@@ -279,12 +250,33 @@ const juegoTijeras = () => {
   }
 };
 
-//////// USUARIO BOTON VER RANKING
+//////// USUARIO BOTON VER RANKING CON FETCH
 
 const rankeo = document.getElementById("rankeo");
+
 rankeo.addEventListener("click", () => {
-  const gritoResultado = document.getElementById("resultadoJuego");
-  gritoResultado.innerHTML = `Los jugadores mas ganadores son: ${jugadoresPremiados[0].nombre}, ${jugadoresPremiados[1].nombre}, ${jugadoresPremiados[2].nombre}. Juega y únete a ellos!`;
+  fetch(baseDatosHistorial)
+    .then((response) => {
+      return response.json();
+    })
+    .then((pokeball) => {
+      todos = jugadoresExcepcionales.concat(pokeball);
+
+      const jugadoresMasGanadores = todos.filter(
+        (player) => player.ganadas > 12
+      );
+
+      const jugadoresPremiados = jugadoresMasGanadores.map((premios) => ({
+        ...premios,
+        medalla: "Oro",
+      }));
+
+      const gritoResultado = document.getElementById("resultadoJuego");
+      gritoResultado.innerHTML = `Los jugadores mas ganadores son: </br>
+    1. ${jugadoresPremiados[0].nombre} con ${jugadoresPremiados[0].ganadas} partidas ganadas, </br>
+    2. ${jugadoresPremiados[1].nombre} con ${jugadoresPremiados[1].ganadas} partidas ganadas,</br>
+    3. ${jugadoresPremiados[2].nombre} con ${jugadoresPremiados[2].ganadas} partidas ganadas,`;
+    });
 });
 
 //INTERFAZ DE JUEGO/////////////////////////////////////////////
@@ -426,13 +418,13 @@ eleccionPiedra.addEventListener("click", () => {
     nombreFormulario === "" ||
     nombreFormulario === " "
   ) {
-    alert("Primero Ingresa tu nombre y apellido");
+    return Swal.fire("Primero Ingresa tu nombre y apellido");
   } else if (
     typeof apellidoFormulario !== "string" ||
     apellidoFormulario === "" ||
     apellidoFormulario === " "
   ) {
-    alert("Primero Ingresa tu nombre y apellido");
+    return Swal.fire("Primero Ingresa tu nombre y apellido");
   } else {
     if (usarBoton) {
       soloMostrarPiedra();
@@ -462,13 +454,13 @@ eleccionPapel.addEventListener("click", () => {
     nombreFormulario === "" ||
     nombreFormulario === " "
   ) {
-    alert("Primero Ingresa tu nombre y apellido");
+    return Swal.fire("Primero Ingresa tu nombre y apellido");
   } else if (
     typeof apellidoFormulario !== "string" ||
     apellidoFormulario === "" ||
     apellidoFormulario === " "
   ) {
-    alert("Primero Ingresa tu nombre y apellido");
+    return Swal.fire("Primero Ingresa tu nombre y apellido");
   } else {
     if (usarBoton) {
       soloMostrarPapel();
@@ -498,13 +490,13 @@ eleccionTijeras.addEventListener("click", () => {
     nombreFormulario === "" ||
     nombreFormulario === " "
   ) {
-    alert("Primero Ingresa tu nombre y apellido");
+    return Swal.fire("Primero Ingresa tu nombre y apellido");
   } else if (
     typeof apellidoFormulario !== "string" ||
     apellidoFormulario === "" ||
     apellidoFormulario === " "
   ) {
-    alert("Primero Ingresa tu nombre y apellido");
+    return Swal.fire("Primero Ingresa tu nombre y apellido");
   } else {
     if (usarBoton) {
       soloMostrarTijeras();
@@ -592,7 +584,6 @@ terminarJuego.addEventListener("click", () => {
         perdida,
         empatada
       );
-      console.log(usuarioNuevo);
 
       localStorage.setItem("jugadorExistente", JSON.stringify(usuarioNuevo));
 
@@ -607,7 +598,6 @@ terminarJuego.addEventListener("click", () => {
         perdida,
         empatada
       );
-      console.log(usuarioNuevo);
 
       localStorage.setItem("jugadorExistente", JSON.stringify(usuarioNuevo));
       usuarioNuevo.mostrar();
