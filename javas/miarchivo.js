@@ -212,21 +212,21 @@ const juegoPapel = () => {
     empatada = suma(empatada);
 
     resultadoJuego.innerHTML =
-      'Tu elegiste Papel y yo elegi Papel ! Empate! <audio src="/audio/empatar.mp3" autoplay> </audio>';
+      'Tu elegiste Papel y yo elegi Papel ! Empate! <audio src="audio/empatar.mp3" autoplay> </audio>';
     Swal.fire("EMPATE!", "Tu elegiste Papel y yo elegi Papel!", "warning");
     bloquearJugada = false;
   } else if (eleccionCompu === "tijeras") {
     perdida = suma(perdida);
 
     resultadoJuego.innerHTML =
-      'Tu elegiste Papel y yo elegi Tijeras ! Perdiste! <audio src="/audio/perder.mp3" autoplay>';
+      'Tu elegiste Papel y yo elegi Tijeras ! Perdiste! <audio src="audio/perder.mp3" autoplay>';
     Swal.fire("PERDISTE!", "Tu elegiste Papel y yo elegi Tijeras!", "error");
     bloquearJugada = false;
   } else {
     ganada = suma(ganada);
 
     resultadoJuego.innerHTML =
-      'Tu elegiste Papel y yo elegi Piedra ! Ganaste! <audio src="/audio/ganar.mp3" autoplay> </audio>';
+      'Tu elegiste Papel y yo elegi Piedra ! Ganaste! <audio src="audio/ganar.mp3" autoplay> </audio>';
     Swal.fire("GANASTE!", "Tu elegiste Papel y yo elegi Piedra!", "success");
     bloquearJugada = false;
   }
