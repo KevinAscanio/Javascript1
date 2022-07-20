@@ -183,20 +183,20 @@ const juegoPiedra = () => {
   if (eleccionCompu === "papel") {
     perdida = suma(perdida);
     resultadoJuego.innerHTML =
-      'Tu elegiste Piedra y yo elegi Papel ! Perdiste!  <audio src="../audio/perder.mp3" autoplay> </audio>';
+      'Tu elegiste Piedra y yo elegi Papel ! Perdiste!  <audio src="audio/perder.mp3" autoplay> </audio>';
 
     Swal.fire("PERDISTE!", "Tu elegiste Piedra y yo elegi Papel!", "error");
     bloquearJugada = false;
   } else if (eleccionCompu === "tijeras") {
     ganada = suma(ganada);
     resultadoJuego.innerHTML =
-      'Tu elegiste Piedra y yo elegi Tijeras ! Ganaste!  <audio src="../audio/ganar.mp3" autoplay> </audio>';
+      'Tu elegiste Piedra y yo elegi Tijeras ! Ganaste!  <audio src="audio/ganar.mp3" autoplay> </audio>';
     Swal.fire("GANASTE!", "Tu elegiste Piedra y yo elegi Tijeras!", "success");
     bloquearJugada = false;
   } else {
     empatada = suma(empatada);
     resultadoJuego.innerHTML =
-      'Tu elegiste Piedra y yo elegi Piedra ! Empate! <audio src="../audio/empatar.mp3" autoplay> </audio>';
+      'Tu elegiste Piedra y yo elegi Piedra ! Empate! <audio src="audio/empatar.mp3" autoplay> </audio>';
 
     Swal.fire("EMPATE!", "Tu elegiste Piedra y yo elegi Piedra!", "warning");
     bloquearJugada = false;
@@ -241,19 +241,19 @@ const juegoTijeras = () => {
   if (eleccionCompu === "papel") {
     ganada = suma(ganada);
     resultadoJuego.innerHTML =
-      'Tu elegiste Tijeras y yo elegi Papel ! Ganaste! <audio src="../audio/ganar.mp3" autoplay> </audio>';
+      'Tu elegiste Tijeras y yo elegi Papel ! Ganaste! <audio src="audio/ganar.mp3" autoplay> </audio>';
     Swal.fire("GANASTE!", "Tu elegiste Tijeras y yo elegi Papel!", "success");
     bloquearJugada = false;
   } else if (eleccionCompu === "tijeras") {
     empatada = suma(empatada);
     resultadoJuego.innerHTML =
-      'Tu elegiste Tijeras y yo elegi Tijeras ! Empate! <audio src="../audio/empatar.mp3" autoplay> </audio>';
+      'Tu elegiste Tijeras y yo elegi Tijeras ! Empate! <audio src="audio/empatar.mp3" autoplay> </audio>';
     Swal.fire("EMPATE!", "Tu elegiste Tijeras y yo elegi Tijeras!", "warning");
     bloquearJugada = false;
   } else {
     perdida = suma(perdida);
     resultadoJuego.innerHTML =
-      'Tu elegiste Tijeras y yo elegi Piedra ! Perdiste! <audio src="../audio/perder.mp3" autoplay>';
+      'Tu elegiste Tijeras y yo elegi Piedra ! Perdiste! <audio src="audio/perder.mp3" autoplay>';
     Swal.fire("PERDISTE!", "Tu elegiste Tijeras y yo elegi Piedra!", "error");
     bloquearJugada = false;
   }
