@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="stylesheet" href="css/estilos.css" href="" />
   </head>
-  <body class="father-body">
+  <body class="father-body paginaInicial">
     <header id="section-header">
-      <h1>Piedra Papel o Tijeras! - Fetch</h1>
+      <h1>Piedra Papel o Tijeras!</h1>
     </header>
+
     <section class="main-seccion">
       <section id="userSection">
-        <div id="contenidoFormu">
+        <div id="contenedorFormulario">
           <h2 id="ask-name">Hola ¿Como te llamas?</h2>
           <form id="formularioNombre">
             <input
-              id="nombreFormulario"
+              class="cajaForm"
+              id="inputNombreFormulario"
               type="text"
               placeholder="Dinos tu nombre"
             />
 
             <input
-              id="apellidoFormulario"
+              class="cajaForm"
+              id="inputApellidoFormulario"
               type="text"
               placeholder="Dinos tu apellido"
             />
@@ -27,45 +30,48 @@
             <p id="answer-form"></p>
             <br />
             <label for="enviarNombres">
-              <input id="enviarNombres" type="submit" value="Enviar" />
+              <input id="enviarNombres" type="submit" value="Continuar" />
             </label>
           </form>
         </div>
         <div id="recordarUser"></div>
       </section>
-
-      <section id="boxes">
-        <section id="boxes-section-choice">
-          <div class="cajita eleccionPiedra"></div>
-          <div class="cajita eleccionPapel"></div>
-          <div class="cajita eleccionTijeras"></div>
+      <div id="elementosDeJuego" class="oculto">
+        <section id="boxes">
+          <section id="boxes-section-choice">
+            <div class="cajita eleccionPiedra"></div>
+            <div class="cajita eleccionPapel"></div>
+            <div class="cajita eleccionTijeras"></div>
+          </section>
+          <section id="box-CPU">
+            <div class="cajita" id="cajitaCPU"></div>
+          </section>
         </section>
-        <section id="box-CPU">
-          <div class="cajita" id="cajitaCPU"></div>
-        </section>
-      </section>
-      <div id="Reiniciador">
-        <button id="nuevoJuego" class="oculto">Reiniciar Juego</button>
-      </div>
-      <section class="final">
-        <h3 id="invitacionJugar">¿Jugamos?</h3>
-        <button id="rankeo" type="submit" value="Ranking">Ranking</button>
-
-        <br />
-        <button id="terminarJuego" name="eleccion" value="salir">
-          Salir y guardar resultados
-        </button>
-        <div id="secondary-section">
-          <h3 id="lets-play"></h3>
-          <p id="grito-inicio"></p>
-          <p id="grito-de-juego"></p>
-          <p id="grito-de-conteo"></p>
-          <h4 id="resultadoJuego"></h4>
-          <h3 id="Resultados" class="oculto"></h3>
+        <div id="Reiniciador">
+          <button id="nuevoJuego" class="oculto">Reiniciar Juego</button>
         </div>
-      </section>
+        <section id="final">
+          <h3 id="invitacionJugar">¿Jugamos?</h3>
+          <button id="rankeo" type="submit" value="Ranking">Ranking</button>
+
+          <br />
+          <button id="terminarJuego" name="eleccion" value="salir">
+            Salir y guardar resultados
+          </button>
+          <div id="secondary-section">
+            <h3 id="lets-play"></h3>
+            <p id="grito-inicio"></p>
+            <p id="grito-de-juego"></p>
+            <p id="grito-de-conteo"></p>
+            <h4 id="resultadoJuego"></h4>
+            <div class="historial"></div>
+            <h3 id="Resultados" class="oculto"></h3>
+          </div>
+        </section>
+      </div>
     </section>
   </body>
+
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="javas/miarchivo.js"></script>
 </html>

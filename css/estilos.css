@@ -9,7 +9,7 @@
 }
 
 .father-body {
-  background: linear-gradient(88deg, #b9683c 0%, #fc9c64 100%);
+  background: linear-gradient(88deg, #c66742 0%, #f3703c 100%);
   color: rgb(255, 255, 255);
   font-family: "Roboto", sans-serif;
 }
@@ -27,7 +27,8 @@ form {
 }
 #userSection {
   text-align: center;
-  padding: 20px;
+  padding: 10px 20px;
+  margin-top: 20px;
 }
 
 h3 {
@@ -113,10 +114,6 @@ h4 {
   box-sizing: border-box;
   height: 200px;
   width: 200px;
-}
-
-.oculto {
-  display: none;
 }
 
 .mostrar {
@@ -225,7 +222,7 @@ h4 {
   box-shadow: 0 0 0 3px rgb(112 102 224 / 50%);
 }
 
-.final {
+#final {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -235,4 +232,56 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.oculto {
+  display: none;
+}
+
+.paginaInicial {
+  background: rgb(112, 102, 224, 0.9);
+}
+
+.cajaForm {
+  height: 30px;
+  width: 200px;
+}
+
+.centrarElemento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.historial {
+  text-align: center;
+}
+
+@media (min-width: 0px) and (max-width: 699.5px) {
+  #cajitaCPU {
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    background-position: center;
+    height: 120px;
+    width: 120px;
+  }
+
+  .cajita {
+    height: 80px;
+    width: 80px;
+    margin: 20px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 10%;
+    border-width: 1px;
+    background-color: white;
+  }
+
+  #rankeo {
+    font-size: 0.8em;
+  }
+
+  #terminarJuego {
+    font-size: 0.8em;
+  }
 }
